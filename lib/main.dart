@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/pages/search_page.dart';
 import 'package:travel_app/pages/welcome_page.dart.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: const WelcomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) =>  WelcomePage(),
+        '/search': (context) =>  SearchPage(),
+      },
     );
   }
 }

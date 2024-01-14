@@ -85,69 +85,77 @@ class _PostFormPageState extends State<PostFormPage> {
 
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Validate form data
-                if (nameController.text.isEmpty ||
-                    locationController.text.isEmpty ||
-                    descriptionController.text.isEmpty ||
-                    imagePath.isEmpty) {
-                  // Show an error message or provide feedback to the user
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Please fill in all fields and select an image.'),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                  return;
-                }
+  onPressed: () {
+    // Validate form data
+    if (nameController.text.isEmpty ||
+        locationController.text.isEmpty ||
+        descriptionController.text.isEmpty ||
+        imagePath.isEmpty) {
+      // Show an error message or provide feedback to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please fill in all fields and select an image.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
 
-                double price = double.tryParse(priceController.text) ?? 0.0;
-                double rating = double.tryParse(ratingController.text) ?? 0.0;
+    double price = double.tryParse(priceController.text) ?? 0.0;
+    double rating = double.tryParse(ratingController.text) ?? 0.0;
 
-                if (price < 0 || price > 100 || rating < 0 || rating > 5) {
-                  // Show an error message or provide feedback to the user
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Invalid price or rating.'),
-                      backgroundColor: Colors.red,
-                    ),
-                  );
-                  return;
-                }
+    if (price < 0 || price > 100 || rating < 0 || rating > 5) {
+      // Show an error message or provide feedback to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Invalid price or rating.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
 
-                // Create an instance of RecommendedPlaceModel and populate it with form data
-                RecommendedPlaceModel place = RecommendedPlaceModel(
-                  name: nameController.text,
-                  price: price,
-                  image: imagePath,
-                  rating: rating,
-                  location: locationController.text,
-                  description: descriptionController.text,
-                );
+    // Debug prints for checking form data
+    print('Name: ${nameController.text}');
+    print('Price: $price');
+    print('Image: $imagePath');
+    print('Rating: $rating');
+    print('Location: ${locationController.text}');
+    print('Description: ${descriptionController.text}');
 
-                // Add the new place to the recommendedPlaces list
-                RecommendedPlacesManager.recommendedPlaces.add(place);
+    // Create an instance of RecommendedPlaceModel and populate it with form data
+    RecommendedPlaceModel place = RecommendedPlaceModel(
+      name: nameController.text,
+      price: price,
+      image: imagePath,
+      rating: rating.toString(),
+      location: locationController.text,
+      description: descriptionController.text,
+    );
 
-                // Provide feedback to the user
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Place submitted successfully.'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
+    // Add the new place to the recommendedPlaces list in the manager
+    RecommendedPlacesManager.addRecommendedPlace(place);
 
-                // Clear form fields and image path after submitting
-                nameController.clear();
-                priceController.clear();
-                ratingController.clear();
-                locationController.clear();
-                descriptionController.clear();
-                setState(() {
-                  imagePath = '';
-                });
-              },
-              child: const Text('Submit'),
-            ),
+    // Provide feedback to the user
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Place submitted successfully.'),
+        backgroundColor: Colors.green,
+      ),
+    );
+
+    // Clear form fields and image path after submitting
+    nameController.clear();
+    priceController.clear();
+    ratingController.clear();
+    locationController.clear();
+    descriptionController.clear();
+    setState(() {
+      imagePath = '';
+    });
+  },
+  child: const Text('Submit'),
+),
           ],
         ),
       ),

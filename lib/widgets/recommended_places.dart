@@ -50,8 +50,8 @@ class RecommendedPlaces extends StatelessWidget {
                         const SizedBox(height: 5),
                         Row(
                           children: [
-                            const Text(
-                              "Basilique Notre Dame ",
+                             Text(
+                              recommendedPlaces[index].location,
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -63,8 +63,8 @@ class RecommendedPlaces extends StatelessWidget {
                               color: Colors.yellow.shade700,
                               size: 14,
                             ),
-                            const Text(
-                              "4.4",
+                             Text(
+                              recommendedPlaces[index].rating as String,
                               style: TextStyle(
                                 fontSize: 12,
                               ),
@@ -80,8 +80,8 @@ class RecommendedPlaces extends StatelessWidget {
                               size: 16,
                             ),
                             const SizedBox(width: 5),
-                            const Text(
-                              "French Polynesia",
+                             Text(
+                              recommendedPlaces[index].name,
                               style: TextStyle(
                                 fontSize: 12,
                               ),

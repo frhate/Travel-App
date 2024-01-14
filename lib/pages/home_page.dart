@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:travel_app/pages/search_page.dart';
+import 'package:travel_app/pages/post_page.dart';
 import 'package:travel_app/widgets/custom_icon_button.dart';
 import 'package:travel_app/widgets/location_card.dart';
 import 'package:travel_app/widgets/nearby_places.dart';
 import 'package:travel_app/widgets/recommended_places.dart';
 import 'package:travel_app/widgets/tourist_places.dart';
-import 'package:travel_app/pages/post_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key});
+
+  void onViewAllRecommendations(BuildContext context) {
+    print("View All Recommendations");
+  }
+
+  void onViewAllNearby(BuildContext context) {
+    print("View All Nearby");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,43 +31,51 @@ class HomePage extends StatelessWidget {
           children: [
             const Text("Good Morning"),
             Text(
-              "Tetteh Jeron Asiedu",
-              style: Theme.of(context).textTheme.labelMedium,
+              "Mr. Adventurer",
+              style: Theme.of(context).textTheme.headline6,
             ),
           ],
         ),
-        actions: const [
-          CustomIconButton(
-            icon: Icon(Ionicons.search_outline),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 8.0, right: 12),
-            child: CustomIconButton(
-              icon: Icon(Ionicons.notifications_outline),
-            ),
-          ),
-        ],
+       actions: [
+GestureDetector(
+  onTap: () {
+    print("Search button pressed");
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SearchPage()),
+    );
+  },
+  child: Icon(Ionicons.search_outline),
+),
+  Padding(
+    padding: const EdgeInsets.only(left: 8.0, right: 12),
+    child: CustomIconButton(
+      icon: Icon(Ionicons.notifications_outline),
+    ),
+  ),
+],
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(14),
         children: [
-          // LOCATION CARD
           const LocationCard(),
           const SizedBox(
             height: 15,
           ),
           const TouristPlaces(),
-          // CATEGORIES
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Recommendation",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headline5,
               ),
-              TextButton(onPressed: () {}, child: const Text("View All"))
+              TextButton(
+                onPressed: () => onViewAllRecommendations(context),
+                child: const Text("View All"),
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -69,9 +86,12 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 "Nearby From You",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headline5,
               ),
-              TextButton(onPressed: () {}, child: const Text("View All"))
+              TextButton(
+                onPressed: () => onViewAllNearby(context),
+                child: const Text("View All"),
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -101,20 +121,14 @@ class HomePage extends StatelessWidget {
           )
         ],
         onTap: (int index) {
-          // Handle navigation based on the tapped icon index.
           switch (index) {
             case 0:
-              // Navigate to Home page.
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              );
+              // Already on the home page
               break;
             case 1:
               // Navigate to Bookmark page.
               break;
             case 2:
-              // Navigate to Ticket page (PostFormPage).
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const PostFormPage()),
@@ -122,7 +136,7 @@ class HomePage extends StatelessWidget {
               break;
             case 3:
               // Navigate to Profile page.
-            
+              break;
           }
         },
       ),

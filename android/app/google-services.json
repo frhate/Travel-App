@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "523712632440",
+    "firebase_url": "https://travel-app-1606b-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "travel-app-1606b",
+    "storage_bucket": "travel-app-1606b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523712632440:android:fc62934dfe97a380777f8d",
+        "android_client_info": {
+          "package_name": "com.bou.travel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523712632440-mqa6flfobl13aj46eeuad3gs9c5mses0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPtvMGvc97u8A1UMqBGfzrqRxxGdVpDdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523712632440-mqa6flfobl13aj46eeuad3gs9c5mses0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

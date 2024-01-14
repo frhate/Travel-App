@@ -3,7 +3,7 @@ class RecommendedPlaceModel {
   final String name;
   final double price;
   final String image;
-  final double rating;
+  final String rating;
   final String location;
   final String description;
 
@@ -29,12 +29,12 @@ class RecommendedPlaceModel {
 // List of recommended places
 List<RecommendedPlaceModel> recommendedPlaces = [
   RecommendedPlaceModel(
-    name: 'Oran',
+    name: 'Algeria Oran',
     image: 'assets/places/oran.jpeg',
     price: 22.0,
     description: 'Oran is a place',
-    rating: 4.4,
-    location: "Basilique Notre Dame d'Afrique",
+    rating: "4.7",
+    location: "Basilique Notre Dame ",
   ),
 ];
 

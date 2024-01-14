@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:travel_app/widgets/comment_widget.dart';
 import 'package:travel_app/widgets/distance.dart';
 
 class TouristDetailsPage extends StatelessWidget {
@@ -8,7 +9,9 @@ class TouristDetailsPage extends StatelessWidget {
     Key? key,
     required this.image,
   }) : super(key: key);
+
   final String image;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -26,7 +29,8 @@ class TouristDetailsPage extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.vertical(
-                          bottom: Radius.circular(20)),
+                        bottom: Radius.circular(20),
+                      ),
                       image: DecorationImage(
                         image: AssetImage(image),
                         fit: BoxFit.cover,
@@ -48,7 +52,8 @@ class TouristDetailsPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.7),
                         borderRadius: const BorderRadius.horizontal(
-                            right: Radius.circular(15)),
+                          right: Radius.circular(15),
+                        ),
                       ),
                       child: Row(
                         children: [
@@ -122,12 +127,6 @@ class TouristDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "01d:32h:56m",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                    ),
                     const SizedBox(height: 5),
                     Text(
                       "Started in",
@@ -144,11 +143,8 @@ class TouristDetailsPage extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
-                image: const DecorationImage(
-                  image: AssetImage('assets/map.png'),
-                  fit: BoxFit.cover,
-                ),
               ),
+              child: CommentWidget(),
             ),
             const SizedBox(height: 15),
             const Distance(),
@@ -164,7 +160,7 @@ class TouristDetailsPage extends StatelessWidget {
                 ),
               ),
               child: const Text("Join this tour"),
-            )
+            ),
           ],
         ),
       ),

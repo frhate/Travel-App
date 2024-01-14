@@ -5,7 +5,7 @@ import 'package:travel_app/widgets/distance.dart';
 
 
 class NearbyPlaces extends StatelessWidget {
-  const NearbyPlaces({Key? key}) : super(key: key);
+  const NearbyPlaces({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +52,12 @@ class NearbyPlaces extends StatelessWidget {
                           children: [
                              Text(
                               nearbyPlaces[index].des,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const Text("Portic Team"),
+                             Text(nearbyPlaces[index].location),
                             const SizedBox(height: 10),
                             // DISTANCE WIDGET
                             const Distance(),
@@ -69,8 +69,8 @@ class NearbyPlaces extends StatelessWidget {
                                   color: Colors.yellow.shade700,
                                   size: 14,
                                 ),
-                                const Text(
-                                  "4.5",
+                                 Text(
+                                  nearbyPlaces[index].rating,
                                   style: TextStyle(
                                     fontSize: 12,
                                   ),
